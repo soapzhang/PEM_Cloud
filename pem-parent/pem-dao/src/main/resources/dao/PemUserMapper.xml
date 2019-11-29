@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fpi.pem.mapper.PemUserMapper">
+    <resultMap id="PemUserMap" type="com.fpi.pem.entity.PemUser">
+        <id column="id" property="id"/>
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+        <result column="name" property="name"/>
+        <result column="sex" property="sex"/>
+        <result column="address" property="address"/>
+        <result column="phone" property="phone"/>
+        <result column="idCard" property="idCard"/>
+        <result column="email" property="email"/>
+        <result column="remark" property="remark"/>
+    </resultMap>
+
+    <select id="getUserByName" resultMap="PemUserMap">
+      select * from pem_user where username = #{username}
+    </select>
+
+    <insert id="insertUser" parameterType="com.fpi.pem.entity.PemUser">
+        INSERT INTO pem_user set username=#{username},password=#{password},name=#{name},
+                                sex = #{sex},address=#{address},phone=#{phone},idCard=#{idCard},
+                                email=#{email},remark=#{remark}
+    </insert>
+</mapper>
